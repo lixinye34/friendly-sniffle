@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李新叶第一中学｜李县教育局 省级重点高中</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23c8161d'/%3E%3Ctext x='32' y='44' font-size='36' font-weight='bold' text-anchor='middle' fill='white'%3E李%3C/text%3E%3C/svg%3E">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+        }
+        a { text-decoration: none; }
+        :root {
+            --red: #c8161d;
+            --red-deep: #8b0000;
+            --gold: #ffd700;
+            --ink: #333;
+            --muted: #555;
+        }
+
+        /* ===== 顶部导航 ===== */
+        header {
+            background: var(--red);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 40px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .logo-box { display: flex; align-items: center; gap: 14px; }
+        .logo-img {
+            width: 72px; height: 72px; border-radius: 50%;
+            border: 2px solid #fff; object-fit: cover;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.35);
+        }
+        .logo-text h1 { font-size: 25px; }
+        .logo-text p { font-size: 14px; opacity: .92; margin-top: 4px; }
+        nav ul { display: flex; list-style: none; gap: 24px; flex-wrap: wrap; }
+        nav a { color: #fff; font-size: 16px; padding: 6px 4px; }
+        nav a:hover, nav a.active { color: var(--gold); }
+
+        /* ===== Banner ===== */
+        .banner {
+            width: 100%; height: 520px; background: #111; position: relative; overflow: hidden;
+        }
+        .banner-bg { width: 100%; height: 100%; object-fit: cover; opacity: .62; }
+        .banner-text { position: absolute; left: 64px; bottom: 78px; color: #fff; max-width: 660px; }
+        .banner-text h2 { font-size: 46px; margin-bottom: 16px; text-shadow: 0 2px 8px rgba(0,0,0,.4); }
+        .banner-text p { font-size: 21px; line-height: 1.8; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+        .highlight-tag { color: var(--gold); font-size: 25px; font-weight: bold; margin-top: 14px; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+
+        /* ===== 容器与标题 ===== */
+        .container { max-width: 1220px; margin: 0 auto; padding: 60px 24px; }
+        .section-title {
+            text-align: center; font-size: 31px; color: var(--red);
+            margin-bottom: 42px; padding-bottom: 14px;
+            border-bottom: 2px solid var(--red);
+            display: inline-block; width: 100%;
+        }
+        .section-sub { text-align: center; color: var(--muted); font-size: 16px; margin-top: -34px; margin-bottom: 34px; }
+
+        /* ===== 学校概况 ===== */
+        .intro-row { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; align-items: center; }
+        .intro-text p { font-size: 16.5px; line-height: 1.9; color: var(--ink); text-indent: 2em; margin-bottom: 14px; }
+        .intro-img { width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+
+        /* ===== 校徽展示 ===== */
+        .badge-show { background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%); padding: 64px 24px; text-align: center; color: #fff; }
+        .badge-show-img { width: 176px; height: 176px; border-radius: 50%; border: 4px solid #fff; object-fit: cover; margin-bottom: 22px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+        .badge-show h3 { font-size: 27px; margin-bottom: 12px; }
+        .badge-show p { font-size: 16.5px; line-height: 1.9; opacity: .93; max-width: 860px; margin: 0 auto; }
+
+        /* ===== 领导团队 ===== */
+        .leader-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+        .leader-card { display: flex; align-items: center; gap: 24px; border: 1px solid #eee; border-radius: 14px; padding: 26px; box-shadow: 0 4px 12px rgba(0,0,0,.07); }
+        .leader-avatar {
+            width: 96px; height: 96px; border-radius: 50%; flex: 0 0 auto;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, var(--red), var(--red-deep)); color: #fff; font-size: 34px; font-weight: bold;
+        }
+        .leader-info h3 { color: var(--red); font-size: 22px; margin-bottom: 6px; }
+        .leader-info .role { display: inline-block; background: #f7e5e5; color: var(--red); font-size: 14px; padding: 3px 12px; border-radius: 20px; margin-bottom: 10px; }
+        .leader-info p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+        /* ===== 三大校区 ===== */
+        .campus-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+        .campus-card { background: #fff; border: 1px solid #eee; border-radius: 14px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,.12); }
+        .campus-card img { width: 100%; height: 220px; object-fit: cover; }
+        .campus-info { padding: 22px; }
+        .campus-info h3 { color: var(--red); font-size: 22px; margin-bottom: 12px; }
+        .campus-info p { color: var(--muted); line-height: 1.7; }
+
+        /* ===== 宣传片 ===== */
+        .video-area { background: #f6f6f6; padding: 64px 0; }
+        .video-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; width: 82%; margin: 0 auto; }
+        .video-box { width: 100%; background: #222; border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 9; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+        .video-box video { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .video-tip { text-align: center; margin-top: 16px; color: #666; font-size: 14px; }
+
+        /* ===== 新闻中心 ===== */
+        .news-wrap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .news-card { border: 1px solid #eee; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+        .news-card img { width: 100%; height: 200px; object-fit: cover; }
+        .news-content { padding: 22px; }
+        .news-content h4 { color: var(--red); font-size: 20px; margin-bottom: 10px; }
+        .news-date { color: #888; font-size: 14px; margin-bottom: 10px; }
+        .news-content p { color: var(--ink); line-height: 1.7; }
+
+        /* ===== 招生入学 ===== */
+        .admission-section { background: #f9f3f3; }
+        .admission-content { max-width: 900px; margin: 0 auto; }
+        .admission-content p { font-size: 17px; line-height: 2; color: var(--ink); margin-bottom: 15px; }
+        .score-highlight { background: var(--red); color: #fff; padding: 10px 18px; font-size: 22px; font-weight: bold; border-radius: 8px; display: inline-block; margin: 8px 0; }
+        .channel-list { font-size: 17px; line-height: 2; color: var(--ink); }
+
+        /* ===== 历年招生政策 ===== */
+        .policy-section { background: #fff; }
+        .policy-hint { text-align: center; color: var(--muted); font-size: 15px; margin-bottom: 30px; }
+        .policy-tabs { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 34px; }
+        .policy-tab { border: 1px solid var(--red); color: var(--red); background: #fff; padding: 10px 28px; border-radius: 30px; font-size: 16px; cursor: pointer; transition: all .2s; }
+        .policy-tab.on { background: var(--red); color: #fff; }
+        .policy-panel { max-width: 820px; margin: 0 auto; }
+        .policy-item { display: none; border: 1px solid #eee; border-left: 4px solid var(--red); border-radius: 12px; padding: 26px 30px; box-shadow: 0 4px 12px rgba(0,0,0,.06); }
+        .policy-item.on { display: block; }
+        .policy-year { font-size: 24px; color: var(--red); margin-bottom: 4px; }
+        .policy-batch { color: #888; font-size: 15px; margin-bottom: 18px; }
+        .policy-row { display: flex; justify-content: space-between; border-bottom: 1px dashed #e2d6d6; padding: 12px 0; }
+        .policy-row:last-of-type { border-bottom: none; }
+        .policy-k { color: var(--muted); font-size: 16px; }
+        .policy-v { color: var(--ink); font-size: 16px; font-weight: 600; }
+        .policy-note { margin-top: 16px; font-size: 15px; color: var(--muted); line-height: 1.7; }
+        .policy-more { text-align: center; margin-top: 26px; color: #888; font-size: 15px; }
+
+        /* ===== 联系我们 ===== */
+        .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .contact-text p { font-size: 17px; line-height: 2; color: var(--ink); margin-bottom: 14px; }
+        .contact-img { width: 100%; border-radius: 12px; }
+
+        /* ===== 页脚 ===== */
+        footer { background: #1b1b1b; color: #fff; text-align: center; padding: 32px; font-size: 15px; line-height: 1.8; }
+        footer .footer-sub { opacity: .7; font-size: 13px; }
+
+        /* ===== 移动端 ===== */
+        @media (max-width: 768px) {
+            header { padding: 14px 18px; flex-direction: column; gap: 16px; }
+            .logo-box { justify-content: center; }
+            .logo-img { width: 58px; height: 58px; }
+            .logo-text h1 { font-size: 19px; }
+            nav ul { gap: 14px; justify-content: center; }
+            nav a { font-size: 14px; }
+            .banner { height: 340px; }
+            .banner-text { left: 22px; bottom: 36px; }
+            .banner-text h2 { font-size: 27px; }
+            .banner-text p { font-size: 15px; }
+            .highlight-tag { font-size: 18px; }
+            .section-title { font-size: 24px; }
+            .intro-row, .leader-wrap, .news-wrap, .contact-wrap, .video-wrap { grid-template-columns: 1fr; }
+            .leader-card { flex-direction: column; text-align: center; }
+            .campus-wrap { grid-template-columns: 1fr; }
+            .campus-card img { height: 180px; }
+            .video-wrap { width: 92%; }
+            .badge-show-img { width: 136px; height: 136px; }
+            .container { padding: 38px 16px; }
+            .policy-row { flex-direction: column; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== 顶部导航 ===== -->
+    <header>
+        <div class="logo-box">
+            <img class="logo-img" src="assets/badge.png" onerror="this.onerror=null;this.src='assets/badge.svg'" alt="李新叶第一中学校徽">
+            <div class="logo-text">
+                <h1>李新叶第一中学</h1>
+                <p>李县教育局 · 省级重点高中</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">学校概况</a></li>
+                <li><a href="#leaders">领导团队</a></li>
+                <li><a href="#campus">校区介绍</a></li>
+                <li><a href="#news">新闻中心</a></li>
+                <li><a href="#admission">招生入学</a></li>
+                <li><a href="#policy">历年招生政策</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===== Banner首屏 ===== -->
+    <section class="banner">
+        <img class="banner-bg" src="assets/hero.jpg" alt="校园全景">
+        <div class="banner-text">
+            <h2>李新叶第一中学</h2>
+            <p>李县教育局直属 · 省级重点高中</p>
+            <div class="highlight-tag">建校一周周年，扬帆启航</div>
+        </div>
+    </section>
+
+    <!-- ===== 学校概况 ===== -->
+    <section id="about" class="container">
+        <h2 class="section-title">学校概况</h2>
+        <div class="intro-row">
+            <div class="intro-text">
+                <p>李新叶第一中学是隶属于李县教育局的省级重点高中，学校创办于2026年，今年迎来建校一周周年。自建校以来，学校坚持立德树人根本任务，秉持"勤学笃行，向阳成长"的办学理念，着力打造现代化高品质高中。</p>
+                <p>学校配套完善，拥有智慧教室、标准化理化生实验室、藏书丰富的图书馆、标准塑胶运动场、现代化学生公寓与食堂，全方位保障学生学习生活。集团实行多校区一体化办学模式，主校区、尉氏校区、明德校区实现师资共建、教研同步、资源互通，三校区协同高质量发展。</p>
+                <p>学校汇聚省内外优秀骨干教师，师资力量雄厚，教学管理严谨规范。建校一周年以来，教学成果稳步提升，在县域内形成良好口碑，致力于培养德智体美劳全面发展的新时代优秀青年学子。</p>
+            </div>
+            <div>
+                <img class="intro-img" src="assets/intro.jpg" alt="教学楼实拍">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 校徽识别 ===== -->
+    <section id="badge" class="badge-show">
+        <img class="badge-show-img" src="assets/badge.png" onerror="this.onerror=null;this.src='assets/badge.svg'" alt="李新叶第一中学校徽">
+        <h3>校徽识别</h3>
+        <p>李新叶第一中学校徽整体为圆形，主体为红色，2026是建校年份。图案包含翻开的书本、幼苗与朝阳，书本代表知识沃土，幼苗象征在校学子，朝阳寓意希望与光明。整体寓意：学子在知识滋养下向阳生长，逐光前行。</p>
+    </section>
+
+    <!-- ===== 领导团队 ===== -->
+    <section id="leaders" class="container">
+        <h2 class="section-title">领导团队</h2>
+        <p class="section-sub">凝心聚力，引领学校高质量发展</p>
+        <div class="leader-wrap">
+            <div class="leader-card">
+                <div class="leader-avatar">君</div>
+                <div class="leader-info">
+                    <h3>君君豪</h3>
+                    <span class="role">校长</span>
+                    <p>主持学校全面工作，统筹集团化办学与教育教学管理，坚持"勤学笃行、向阳成长"办学理念，带领全体教职工稳步提升办学质量。</p>
+                </div>
+            </div>
+            <div class="leader-card">
+                <div class="leader-avatar">陈</div>
+                <div class="leader-info">
+                    <h3>陈瑞泽</h3>
+                    <span class="role">副校长</span>
+                    <p>分管教育教学与教研工作，推进课堂教学改革与师资队伍建设，助力三校区教研同步、教学质量稳步提升。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 三大校区 ===== -->
+    <section id="campus" class="container">
+        <h2 class="section-title">集团三大校区</h2>
+        <div class="campus-wrap">
+            <div class="campus-card">
+                <img src="assets/campus-main.jpg" alt="主校区">
+                <div class="campus-info">
+                    <h3>主校区</h3>
+                    <p>集团核心主校区，集团管理中心所在地，骨干教师大本营，承担集团教研统筹、教师培训任务，办学底蕴深厚。</p>
+                </div>
+            </div>
+            <div class="campus-card">
+                <img src="assets/campus-yushi.jpg" alt="尉氏校区">
+                <div class="campus-info">
+                    <h3>尉氏校区</h3>
+                    <p>集团重点打造分校区，高起点建设，高标准配置师资，传承总校办学体系，办学成绩突出。</p>
+                </div>
+            </div>
+            <div class="campus-card">
+                <img src="assets/campus-mingde.jpg" alt="明德校区">
+                <div class="campus-info">
+                    <h3>明德校区</h3>
+                    <p>集团新建校区，以"明德笃行"为育人特色，现代化智慧校园，重点发展学生综合素质培养。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 校园宣传片 ===== -->
+    <section id="video" class="video-area">
+        <h2 class="section-title">李新叶第一中学 · 校园宣传片</h2>
+        <div class="video-wrap">
+            <div class="video-box">
+                <video controls playsinline preload="metadata" poster="assets/badge.png">
+                    <source src="assets/video/video1.mp4" type="video/mp4">
+                    您的浏览器暂不支持视频播放。
+                </video>
+            </div>
+            <div class="video-box">
+                <video controls playsinline preload="metadata" poster="assets/badge.png">
+                    <source src="assets/video/video2.mp4" type="video/mp4">
+                    您的浏览器暂不支持视频播放。
+                </video>
+            </div>
+        </div>
+        <p class="video-tip">校园宣传片点击播放，将视频放入 assets/video/ 目录即可</p>
+    </section>
+
+    <!-- ===== 新闻中心 ===== -->
+    <section id="news" class="container">
+        <h2 class="section-title">新闻中心</h2>
+        <div class="news-wrap">
+            <div class="news-card">
+                <img src="assets/news1.jpg" alt="周年庆典">
+                <div class="news-content">
+                    <h4>李新叶第一中学建校一周年庆典圆满举办</h4>
+                    <div class="news-date">发布时间：2026年09月</div>
+                    <p>我校隆重举行建校一周周年庆典活动，全校师生齐聚一堂，回顾办学历程，展望未来发展。李县教育局领导到场致辞，肯定我校办学成果。</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <img src="assets/news2.jpg" alt="教研活动">
+                <div class="news-content">
+                    <h4>我校开展骨干教师教研交流活动</h4>
+                    <div class="news-date">发布时间：2026年08月</div>
+                    <p>三校区骨干教师齐聚主校区开展教研研讨会，统一教学进度，交流教学方法，持续打磨课堂，提升整体教学质量。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 招生入学 ===== -->
+    <section id="admission" class="container admission-section">
+        <h2 class="section-title">招生入学</h2>
+        <div class="admission-content">
+            <p>李新叶第一中学为李县教育局直属省级重点高中，面向全县招收优秀应届初中毕业生。</p>
+            <p>本年度中考总分满分750分，我校最低录取分数线：<span class="score-highlight">695分</span></p>
+            <p>想要了解最新招生政策、校园开放日、志愿填报指南，可关注官方新媒体平台：</p>
+            <p class="channel-list">微信公众号：李新叶第一中学<br>抖音账号：李新叶第一中学<br>快手账号：李新叶第一中学</p>
+            <p>平台会持续发布招生公告、校园动态、录取通知等相关信息。历年的录取分数线可进入下方【历年招生政策】专区查看。</p>
+        </div>
+    </section>
+
+    <!-- ===== 历年招生政策 ===== -->
+    <section id="policy" class="container policy-section">
+        <h2 class="section-title">历年招生政策</h2>
+        <p class="policy-hint">本专区逐年收录我校各年度中考招生政策与录取分数线，历年记录持续保留，每年招生季自动更新。</p>
+        <div class="policy-tabs" id="policyTabs"></div>
+        <div class="policy-panel" id="policyPanel"></div>
+        <p class="policy-more">—— 更多年度招生政策持续更新中 ——</p>
+    </section>
+
+    <!-- ===== 联系我们 ===== -->
+    <section id="contact" class="container">
+        <h2 class="section-title">联系我们</h2>
+        <div class="contact-wrap">
+            <div class="contact-text">
+                <p>学校全称：李新叶第一中学</p>
+                <p>主管单位：李县教育局</p>
+                <p>了解学校详情、咨询招生问题，欢迎关注官方账号：</p>
+                <p>微信公众号、抖音、快手平台搜索：李新叶第一中学</p>
+                <p>学校会在官方新媒体平台及时回复咨询，发布校园通知。</p>
+            </div>
+            <div>
+                <img class="contact-img" src="assets/campus-yushi.jpg" alt="校园大门">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 页脚 ===== -->
+    <footer id="footer">
+        <p>© 2026 李新叶第一中学 李县教育局 版权所有 | 省级重点高中</p>
+        <p class="footer-sub">李新叶教育集团 · 主校区 · 尉氏校区 · 明德校区</p>
+    </footer>
+
+    <script>
+        // ===== 历年招生政策数据（逐年往这个数组添加即可持续显示） =====
+        var POLICIES = [
+            {
+                year: "2026年",
+                batch: "初中毕业生招生 · 秋季入学",
+                items: [
+                    { k: "中考总分", v: "满分750分" },
+                    { k: "最低录取分数线", v: "695分" },
+                    { k: "招生范围", v: "面向全县应届初中毕业生" },
+                    { k: "报名渠道", v: "微信公众号 / 抖音 / 快手" }
+                ],
+                note: "本年度为建校后第二次招生，录取分数线较上年有所提升，生源质量持续优化。"
+            },
+            {
+                year: "2025年",
+                batch: "初中毕业生招生 · 秋季入学",
+                items: [
+                    { k: "中考总分", v: "满分750分" },
+                    { k: "最低录取分数线", v: "652分" },
+                    { k: "招生范围", v: "面向全县应届初中毕业生" },
+                    { k: "报名渠道", v: "微信公众号 / 抖音 / 快手" }
+                ],
+                note: "本年度为我校建校后首次招生，录取分数线为652分，顺利完成首届生源录取工作。"
+            }
+        ];
+
+        // ===== 渲染标签页 =====
+        var tabs = document.getElementById("policyTabs");
+        var panel = document.getElementById("policyPanel");
+
+        function renderPolicy() {
+            var tabHtml = "";
+            for (var i = 0; i < POLICIES.length; i++) {
+                tabHtml += '<button class="policy-tab' + (i === 0 ? " on" : "") + '" data-i="' + i + '">' + POLICIES[i].year + '</button>';
+            }
+            tabs.innerHTML = tabHtml;
+            var panelHtml = "";
+            for (var j = 0; j < POLICIES.length; j++) {
+                var p = POLICIES[j];
+                var rows = "";
+                for (var r = 0; r < p.items.length; r++) {
+                    rows += '<div class="policy-row"><span class="policy-k">' + p.items[r].k + '</span><span class="policy-v">' + p.items[r].v + '</span></div>';
+                }
+                panelHtml += '<div class="policy-item' + (j === 0 ? " on" : "") + '">' +
+                    '<div class="policy-year">' + p.year + '</div>' +
+                    '<div class="policy-batch">' + p.batch + '</div>' +
+                    rows +
+                    '<p class="policy-note">' + p.note + '</p>' +
+                    '</div>';
+            }
+            panel.innerHTML = panelHtml;
+
+            var btns = tabs.querySelectorAll(".policy-tab");
+            var items = panel.querySelectorAll(".policy-item");
+            for (var t = 0; t < btns.length; t++) {
+                btns[t].addEventListener("click", function () {
+                    var idx = parseInt(this.getAttribute("data-i"));
+                    for (var x = 0; x < btns.length; x++) btns[x].classList.remove("on");
+                    for (var y = 0; y < items.length; y++) items[y].classList.remove("on");
+                    this.classList.add("on");
+                    items[idx].classList.add("on");
+                });
+            }
+        }
+        renderPolicy();
+    </script>
+
+</body>
+</html>

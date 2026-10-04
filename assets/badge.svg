@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="65%">
+      <stop offset="0%" stop-color="#e02020"/>
+      <stop offset="100%" stop-color="#8b0000"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="url(#bg)" stroke="#ffd700" stroke-width="4"/>
+  <circle cx="100" cy="100" r="86" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.55"/>
+  <!-- 书本 -->
+  <path d="M70 88 L100 78 L130 88 L130 122 L100 112 L70 122 Z" fill="#fff" opacity="0.95"/>
+  <path d="M70 88 L70 122 M130 88 L130 122 M100 78 L100 112" stroke="#8b0000" stroke-width="2.2" fill="none"/>
+  <!-- 幼苗 -->
+  <path d="M100 112 Q100 96 84 88" stroke="#6dbf4a" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <ellipse cx="84" cy="86" rx="10" ry="6" fill="#6dbf4a"/>
+  <!-- 2026 -->
+  <text x="100" y="148" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#ffd700" text-anchor="middle">2026</text>
+  <!-- 环形文字 -->
+  <path id="ring" d="M100 96 m-66 0 a66 66 0 1 1 132 0 a66 66 0 1 1 -132 0" fill="none"/>
+  <text font-family="Arial, sans-serif" font-size="15" fill="#ffffff" letter-spacing="3">
+    <textPath href="#ring" startOffset="28%">李新叶第一中学</textPath>
+  </text>
+</svg>
